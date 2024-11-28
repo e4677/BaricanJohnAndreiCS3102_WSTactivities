@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --clr-dark: #006400; 
+  --clr-light: #F8F8FF; 
+  --clr-accent: #ff0800; 
+  --clr-secondary: #FFD700; 
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(135deg, #e62d27 0%, #025c02 100%);
+    color: var(--clr-light);
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden; 
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #fff;
+    font-size: 1.5rem;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.snowflake:nth-child(odd) {
+    animation-duration: 8s;
+    animation-delay: -3s;
+}
+
+.snowflake:nth-child(even) {
+    animation-duration: 10s;
+    animation-delay: -5s;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.flex-child {
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--clr-light);
+    border: 2px solid var(--clr-dark);
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.flex-child::before {
+    content: '🎄';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.3);
+    transform: rotate(45deg);
+}
+
+.flex-child:hover {
+    transform: translateY(-10px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: var(--clr-accent);
+    background: linear-gradient(135deg, #FFD700, var(--clr-light));
+}
+
+.material-icons {
+    font-size: 40px;
+    color: var(--clr-accent);
+    display: block;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.flex-child:hover .material-icons {
+    transform: scale(1.2);
+    color: var(--clr-secondary);
+}
+
+h2 {
+    font-family: 'PT Serif', Times, serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--clr-dark);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+p {
+    font-size: 14px;
+    margin: 5px 0;
+    font-weight: bold;
+    color: var(--clr-dark);
+}
+
+.flex-child:hover::after {
+    content: '✨✨';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.6);
+    animation: sparkle 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flex-child {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .material-icons {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
